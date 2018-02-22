@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		System.out.println("Laddar in listan...");
-		String[] paths = new String[2];
+		String[] paths = new String[1];
 		paths[0] = "/Users/marietopphem/Desktop/actors.list";
 		//paths[1] = "/Users/marietopphem/Desktop/actresses.list";
 		
