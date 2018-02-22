@@ -3,9 +3,6 @@ package hogrebetyg;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 
 
 public class Graph {
@@ -27,6 +24,7 @@ public class Graph {
 		titlecounter = 0;
 
 		for (String string : filePath) {
+		
 			fillGraph(string);
 		}
 	}
@@ -160,6 +158,5 @@ public class Graph {
 		}
 
 	}
-
 
 }
