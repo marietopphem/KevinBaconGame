@@ -40,6 +40,7 @@ public class SearchGraph {
 				System.out.println(path.toString());
 				baconValue = path.size()/2;
 
+				queue.clear();
 				return baconValue;
 				
 			}else {
