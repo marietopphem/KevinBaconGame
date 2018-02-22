@@ -32,18 +32,16 @@ public class SearchGraph {
 				ArrayList<String> path = new ArrayList<String>();
 
 				for(int i = index; i != source; i = childAndParent.get(i)){
-					System.out.println("1: " +i);
-					System.out.println("2: " +childAndParent.get(i));
-
+					
 					path.add(graph.indexconnectionToVertex.get(i));
 				}
 				
 				path.add(graph.indexconnectionToVertex.get(source));
 				System.out.println(path.toString());
 				baconValue = path.size()/2;
-				System.out.println(baconValue + " Baconvärdet");
 
 				return baconValue;
+				
 			}else {
 				sourceChild = graph.listedConnections.get(index);
 				
@@ -51,8 +49,6 @@ public class SearchGraph {
 					queue.add(child);
 					childAndParent.put(child, index);
 				}
-				
-				
 				
 			}
 		}

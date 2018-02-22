@@ -12,7 +12,6 @@ public class Graph {
 	HashMap<Integer, String> indexconnectionToVertex;
 
 	int LCIndex;
-	int titlecounter;
 
 	public Graph(String[] filePath) {
 
@@ -21,7 +20,7 @@ public class Graph {
 		indexconnectionToVertex = new HashMap<Integer, String>();
 
 		LCIndex = 0;
-		titlecounter = 0;
+		
 
 		for (String string : filePath) {
 		
@@ -30,8 +29,6 @@ public class Graph {
 	}
 
 	private void fillGraph(String filepath) {
-
-
 
 		try {
 			// för att läsa in data
@@ -42,18 +39,14 @@ public class Graph {
 			StringBuilder builder = new StringBuilder();
 
 			int currentActorIndex = 0;
-			int actorcounter = 0;
-
 
 			while((part = br.getNextPart()) != null) {
-
 
 				switch (part.type) {
 
 				case NAME:
 
-
-					if (/*LCIndex > 0 &&*/ !builder.toString().isEmpty()) {
+					if (!builder.toString().isEmpty()) {
 						addToGraph(currentActorIndex, builder.toString());
 						builder = new StringBuilder();
 					}
@@ -64,8 +57,6 @@ public class Graph {
 					vertexToConnectionindex.put(name, LCIndex);
 					indexconnectionToVertex.put(LCIndex, name);
 					currentActorIndex = LCIndex++;
-					actorcounter++;
-
 
 					break;
 
@@ -76,11 +67,9 @@ public class Graph {
 						builder = new StringBuilder(part.text);
 					}else {
 						builder.append(part.text);
-						//builder.append();
 
 					}
 					break;
-
 
 				case YEAR:
 					builder.append(" : ");
@@ -89,17 +78,9 @@ public class Graph {
 					break;
 
 				case ID:
-
-//					builder.append(" : ");
-//					builder.append( part.text);
-
 					builder = new StringBuilder();
 					
-
 					break;
-
-
-
 
 				case INFO:
 					break;
@@ -109,31 +90,11 @@ public class Graph {
 			}
 			addToGraph(currentActorIndex, builder.toString());
 
-			System.out.println(actorcounter + " actors");
-			System.out.println(titlecounter + " Movies");
-			System.out.println(indexconnectionToVertex.get(listedConnections.size()-1));
-			System.out.println(indexconnectionToVertex.get(listedConnections.size()-2));
-			System.out.println(indexconnectionToVertex.get(listedConnections.size()-3));
-			System.out.println(indexconnectionToVertex.get(listedConnections.size()-4));
-			System.out.println(indexconnectionToVertex.get(0));
-			System.out.println(indexconnectionToVertex.get(1));
-			System.out.println(indexconnectionToVertex.get(2));
-			System.out.println(indexconnectionToVertex.get(3));
-
-			System.out.println(indexconnectionToVertex.get((indexconnectionToVertex.size())-1));
-
-
-		
-
-
-			
 
 		} catch (IOException e) {
 			System.out.println("Something wrong with filepath: " + e);
 
 		}
-		
-
 	}
 
 	private void addToGraph(int currentActorIndex, String title) {
@@ -154,9 +115,7 @@ public class Graph {
 			vertexToConnectionindex.put(title, LCIndex);
 			indexconnectionToVertex.put(LCIndex, title);
 			LCIndex++;
-			titlecounter++;
 		}
-
 	}
 
 }
